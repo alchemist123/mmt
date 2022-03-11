@@ -1008,7 +1008,7 @@ the website, in dark theme
   }
   .product__title,
   .product__price{
-    font-size: var(--normal-font-size);
+    font-size: var(--smaller-font-size);
   }
 
   .questions__container{
