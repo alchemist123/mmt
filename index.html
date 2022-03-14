@@ -12,7 +12,7 @@
 
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="assets/css/styles.css">
-
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <title>MMT</title>
     </head>
     <body>
@@ -400,22 +400,22 @@
                     <form action="" class="contact__form">
                         <div class="contact__inputs">
                             <div class="contact__content">
-                                <input type="email" placeholder=" " class="contact__input">
+                                <input type="email" id="mailId" placeholder=" " class="contact__input">
                                 <label for="" class="contact__label">Email</label>
                             </div>
 
                             <div class="contact__content">
-                                <input type="text" placeholder=" " class="contact__input">
+                                <input type="text" id="sub" placeholder=" " class="contact__input">
                                 <label for="" class="contact__label">Subject</label>
                             </div>
 
                             <div class="contact__content contact__area">
-                                <textarea name="message" placeholder=" " class="contact__input"></textarea>                              
+                                <textarea name="message" id="msg" placeholder=" " class="contact__input"></textarea>                              
                                 <label for="" class="contact__label">Message</label>
                             </div>
                         </div>
 
-                        <button class="button button--flex">
+                        <button id="sendMail" class="button button--flex">
                             Send Message
                             <i class="ri-arrow-right-up-line button__icon"></i>
                         </button>
@@ -505,5 +505,22 @@
         
         <!--=============== MAIN JS ===============-->
         <script src="assets/js/main.js"></script>
+        <script>
+            $("#sendMail").click(function(e){
+                e.preventDefault()
+                var mail=$("#mailId").val();
+                console.log(mail)
+                var sub=$("#sub").val();
+                var msg=$("#msg").val();
+                $.post('https://swift-shade-carp.glitch.me/auth/mail',{
+                    mailId:mail,
+                    sub:sub,
+                    message:msg
+                    
+                },function(response){
+                    alert("message sent")
+                })
+            })
+        </script>
     </body>
 </html>
